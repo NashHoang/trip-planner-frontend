@@ -54,7 +54,6 @@ function ActivityCard({ activity, setActivities }) {
 
       const updatedActivity = res.data
 
-      // ✅ THIS FIXES BudgetTracker + TimelineView
       setActivities((prev) =>
         prev.map((a) =>
           a.id === updatedActivity.id ? updatedActivity : a
@@ -143,7 +142,7 @@ function ActivityCard({ activity, setActivities }) {
               {form.description || 'No description'}
             </Text>
 
-            <Text>📍 {form.location}</Text>
+            <Text>{form.location}</Text>
 
             <Text color="gray.500">
               {new Date(form.activityDate).toLocaleString()}
