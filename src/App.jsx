@@ -1,17 +1,35 @@
-import { Route, Routes } from 'react-router-dom'
-import { HomePage, LoginPage, TasksDetailPage, TasksPage } from './pages'
+import { Routes, Route } from 'react-router-dom'
+import {
+  Login,
+  Register,
+  Dashboard,
+  Trips,
+  Destinations,
+  Activities,
+} from './pages'
+
 import { MainLayout } from './layouts'
 
-const App = () => {
+import { ProtectedRoute } from './components'
+
+function App() {
   return (
     <Routes>
-      <Route path='/' element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path='login' element={<LoginPage />} />
-        <Route path='tasks'>
-          <Route index element={<TasksPage />} />
-          <Route path=':id' element={<TasksDetailPage />} />
-        </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="trips" element={<Trips />} />
+        <Route path="destinations/:tripId" element={<Destinations />} />
+        <Route path="activities/:destinationId" 
+              element={<Activities />} />
       </Route>
     </Routes>
   )
