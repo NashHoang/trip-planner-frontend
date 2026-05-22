@@ -200,7 +200,6 @@ function Activities() {
         </form>
       </Box>
 
-      {/* OPTIONAL ADVANCED FEATURES */}
       <BudgetTracker activities={activities} />
       <TimelineView activities={activities} />
 
